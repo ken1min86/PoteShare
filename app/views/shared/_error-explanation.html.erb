@@ -1,0 +1,17 @@
+<%# エラー表示の共通部品 %>
+<% if user %>
+<% if user.errors.full_messages !=[] %>
+<div class="error-explanation">
+  <div class="error-explanation__header">
+    <h2><%= user.errors.full_messages.count %> errors prohibited this user from being saved:</h2>
+  </div>
+  <div class="error-explanation__main">
+    <ul class="error-explanation__lists">
+      <% user.errors.full_messages.each do |message| %>
+      <li class="error-explanation__element">-<%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<% end %>

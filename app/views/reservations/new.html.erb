@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <%# 予約フォーム %>
+    <div class="room-reserve-form__confirmaion col-6 offset-3">
+      <div class="room-reserve-form">
+        <%= form_with model: @reservation, method: :post, url: reservations_path do |f| %>
+
+        <h2 class="room-reserve-form__head">予約内容確認</h2>
+
+        <%# エラー表示の共通部品 %>
+        <%= render "shared/error-explanation", user: @reservation %>
+
+        <%# 1日あたりの値段 %>
+        <p class="room-reserve-form__title">¥ <%= @room.fee %> / 日</p>
+
+        <%# 開始日 %>
+        <div class="room-reserve-form__input-field">
+          <%= f.label :start_date, "開始日" ,class: "room-reserve-form__input-label"  %>
+          <%= f.date_field :start_date, class: "room-reserve-form__input room-reserve-form__input--readonly", readonly: true %>
+        </div>
+
+        <%# 終了日 %>
+        <div class="room-reserve-form__input-field">
+          <%= f.label :end_date, "終了日" ,class: "room-reserve-form__input-label"  %>
+          <%= f.date_field :end_date, class: "room-reserve-form__input room-reserve-form__input--readonly" , readonly: true%>
+        </div>
+
+        <%# 使用日数 %>
+        <div class="room-reserve-form__input-field room-reserve-form__input-field--border-bottom">
+          <p>使用日数 : <%= @days_of_use %>日</p>
+        </div>
+
+        <%# 人数 %>
+        <div class="room-reserve-form__input-field room-reserve-form__input-field--border-bottom">
+          <p>人数 : <%= @reservation[:num_of_people] %>人</p>
+        </div>
+
+        <%# 合計金額 %>
+        <div class="room-reserve-form__input-field">
+          <%= f.label :sum_of_fee, "合計金額" ,class: "room-reserve-form__input-label"  %>
+          <%= f.number_field :sum_of_fee, class: "room-reserve-form__input room-reserve-form__input--readonly" , readonly: true%>
+          <p class="room-reserve-form__confirm-message">上記内容でよろしければ「予約を確定」を押してください</p>
+        </div>
+
+        <%# 隠し要素 room_id %>
+        <div>
+          <%= f.hidden_field :room_id, value: @room.id%>
+        </div>
+
+        <%# 隠し要素 num_of_people %>
+        <div>
+          <%= f.hidden_field :num_of_people, value: @reservation.num_of_people%>
+        </div>
+
+        <%# 予約確定ボタン %>
+        <div class="room-reserve-form__input-field ">
+          <%= f.submit "予約を確定", class: 'account__submit btn btn-primary btn-lg btn-block' %>
+        </div>
+
+        <% end %>
+
+        <%# ルーム詳細に戻る %>
+        <div class="room-reserve-form__input-field ">
+          <%= button_to "ルーム詳細に戻る", reserve_room_path(@reservation.room_id),  method: :get , class: 'account__submit btn btn-secondary btn-lg btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

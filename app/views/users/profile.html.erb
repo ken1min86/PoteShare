@@ -1,0 +1,64 @@
+<div class="row">
+  <section class="user-nav col-lg-2 d-lg-block d-none">
+    <ul>
+      <li class="user-nav__list ">
+        <%= link_to "アカウント", users_account_path, class: "user-nav__element " %>
+      </li>
+      <li class="user-nav__list user-nav__list--active">
+        <%= link_to "プロフィール", users_profile_path, class: "user-nav__element user-nav__element--active" %>
+      </li>
+    </ul>
+  </section>
+
+  <section class="user-nav-mobile col-lg-2 d-lg-none">
+    <ul class="user-nav-mobile__container">
+      <li class="user-nav-mobile__list ">
+        <%= link_to "アカウント", users_account_path, class: "user-nav-mobile__element " %>
+      </li>
+      <li class="user-nav-mobile__list user-nav-mobile__list--active">
+        <%= link_to "プロフィール", users_profile_path, class: "user-nav-mobile__element user-nav-mobile__element--active" %>
+      </li>
+    </ul>
+  </section>
+  <section class="user-view col-lg-10">
+    <%= form_with model: @user, method: :post, url: users_profile_path do |f| %>
+    <div class="account-info">
+      <h2 class="account-info__row account-info__row--title">プロフィール</h2>
+      <%# エラー表示の共通部品 %>
+      <%= render "shared/error-explanation", user: @user %>
+
+
+      <div class="row account-info__row account-info__row--center">
+        <%= image_tag @user.user_img.url, alt: "User's icon", class: "account-info__content-image" %>
+      </div>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--optional">
+          <%= f.label  :user_img ,'アイコン画像' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail">
+          <%= f.file_field :user_img %>
+        </div>
+      </div>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--required">
+          <%= f.label :username,'名前' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail">
+          <%= f.text_field :username, class: "account-info__content-detail--max-width" %>
+        </div>
+      </div>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--optional">
+          <%= f.label :introduction,'自己紹介' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail ">
+          <%= f.text_area :introduction, class: "account-info__content-detail--max-width account-info__content-detail--adjust-height", placeholder: "自己紹介を入力" %>
+        </div>
+      </div>
+      <div class="row account-info__row account-info__row--no-border col-md-2">
+        <%= f.submit "更新", class: "  btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </section>
+</div>

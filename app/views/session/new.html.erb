@@ -1,0 +1,20 @@
+<div class="do-login__container">
+  <div class="do-login__form">
+    <h2 class="do-login__title">ログイン</h2>
+
+    <div>
+      <%= form_with scope: :session, local: true do |f| %>
+      <div class="login__container login__form--required">
+        <%= f.email_field :email, placeholder:'メールアドレス', class: 'login__form'  %>
+      </div>
+      <div class="login__container login__form--required">
+        <%= f.password_field :password, placeholder:'パスワード', class: 'login__form'  %>
+      </div>
+      <div class="login__container">
+        <%= f.submit "ログイン", class: 'login__submit btn btn-primary btn-lg btn-block' %>
+      </div>
+      <% end %>
+      <%= link_to "新しいアカウントを作成", new_user_path ,class: 'login__login-link' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="row">
+  <section class="user-nav col-lg-2 d-lg-block d-none">
+    <ul>
+      <li class="user-nav__list user-nav__list--active">
+        <%= link_to "基本情報", users_profile_path, class: "user-nav__element user-nav__element--active" %>
+      </li>
+    </ul>
+  </section>
+
+  <section class="user-nav-mobile col-lg-2 d-lg-none">
+    <ul>
+      <li class="user-nav-mobile__list user-nav-mobile__list--active">
+        <%= link_to "基本情報", users_profile_path, class: "user-nav-mobile__element user-nav-mobile__element--active" %>
+      </li>
+    </ul>
+  </section>
+
+  <section class="user-view col-lg-10">
+    <%= form_with model: @room do |f| %>
+    <div class="account-info">
+      <h2 class="account-info__row account-info__row--title">ルーム情報登録
+      </h2>
+      <%# エラー表示の共通部品 %>
+      <%= render "shared/error-explanation", user: @room %>
+
+      <%# ルーム名 %>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--required">
+          <%= f.label :roomname,'ルーム名' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail">
+          <%= f.text_field :roomname, class: "account-info__content-detail--max-width", placeholder: 'ルーム名を入力' %>
+        </div>
+      </div>
+
+      <%# ルーム紹介 %>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--required">
+          <%= f.label :introduction,'ルーム紹介' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail ">
+          <%= f.text_area :introduction, class: "account-info__content-detail--max-width account-info__content-detail--adjust-height", placeholder: "ルーム説明を入力" %>
+        </div>
+      </div>
+
+      <%# 料金 %>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--required">
+          <%= f.label :fee,'料金' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail">
+          <%= f.number_field :fee, class: "account-info__content-detail--max-width", placeholder: "一日あたりの料金を入力" %>
+        </div>
+      </div>
+
+      <%# 住所 %>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--required">
+          <%= f.label :address,'住所' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail">
+          <%= f.text_field :address, class: "account-info__content-detail--max-width", placeholder: "住所を入力"  %>
+        </div>
+      </div>
+
+      <%# ルーム画像 %>
+      <div class="row account-info__row">
+        <div class="col-md-3 account-info__content-title account-info__content-title--required">
+          <%= f.label  :room_img ,'ルーム画像' %>
+        </div>
+        <div class="col-md-9 account-info__content-detail">
+          <%= f.file_field :room_img %>
+        </div>
+      </div>
+
+      <div class="row account-info__row account-info__row--no-border">
+        <%= f.submit "登録", class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </section>
+</div>

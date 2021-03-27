@@ -1,0 +1,199 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// ***************************
+// アカウント作成画面
+// /users/new
+.create-account {
+  @include account-and-login-form;
+}
+
+.account {
+  &__container {
+    margin-bottom: 10px;
+    width: 300px;
+    margin: 0 auto 10px;
+  }
+
+  &__wrapper {
+    width: 360px;
+  }
+
+  @include input-form-required;
+
+  &__submit {
+    @include template-btn;
+  }
+
+  &__login-link {
+    @include templete-link;
+  }
+}
+
+.field_with_errors {
+  display: contents;
+  input {
+    border: 2px solid red;
+  }
+}
+
+// ***************************
+// アカウント情報画面
+// /users/account
+.user-nav-mobile {
+  width: auto;
+  box-sizing: border-box;
+  padding: 30px 30px;
+
+  &__container {
+    display: flex;
+  }
+
+  &__list {
+    font-size: 18px;
+    padding: 10px;
+    list-style: none;
+
+    &--active {
+      border-bottom: 3px solid #4a90e2;
+    }
+  }
+
+  &__element {
+    &--active {
+      color: #4a90e2;
+    }
+  }
+}
+
+.user-nav {
+  padding: 30px 15px 30px 45px;
+  height: 100vh;
+  border-right: 2px solid #e2e2e2;
+
+  &__list {
+    list-style: none;
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+
+    &--active {
+      border-right: 3px solid #4a90e2;
+    }
+  }
+
+  &__element {
+    &--active {
+      color: #4a90e2;
+    }
+  }
+}
+
+.user-view {
+  background-color: #f6f8f9;
+  padding: 30px 15px;
+}
+
+.account-info {
+  max-width: 880px;
+  background-color: #fff;
+  border: 1px solid #eaedef;
+  margin: 0 auto;
+  padding: 15px;
+
+  &__row {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0;
+
+    &--title {
+      padding: 10px 20px 30px 20px;
+      font-size: 16px;
+      font-size: 1.25rem;
+    }
+
+    &--no-border {
+      border: none;
+      margin-left: 32px;
+    }
+  }
+
+  &__content-title {
+    font-weight: bold;
+  }
+}
+
+.btn-primary {
+  width: 120px;
+}
+
+// ***************************
+// アカウント編集画面
+// /users/edit
+.edit-account {
+  @include account-and-login-form;
+  &__title {
+    font-size: 2rem;
+  }
+}
+
+.account {
+  &__wrapper {
+    width: 360px;
+    margin: 0px auto;
+  }
+
+  &__container {
+    width: 100%;
+  }
+
+  &__form {
+    width: 80%;
+    margin-top: 12px;
+  }
+}
+
+// ***************************
+// プロフィール編集画面
+// /users/profile
+.account-info {
+  &__content-image {
+    @include icon-image;
+  }
+
+  &__row {
+    &--center {
+      justify-content: center;
+    }
+  }
+
+  &__content-title {
+    &--required::after {
+      @include required-tag;
+      margin-left: 4px;
+    }
+
+    &--optional::after {
+      @include optional-tag;
+      margin-left: 4px;
+    }
+  }
+
+  &__content-detail {
+    &--max-width {
+      width: 100%;
+      color: #495057;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      font-weight: 400;
+      line-height: 1.5;
+      height: calc(1.5em + 0.75rem + 2px);
+      border-radius: 0.25rem;
+    }
+
+    &--adjust-height {
+      height: auto;
+    }
+  }
+}

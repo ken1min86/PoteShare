@@ -1,0 +1,28 @@
+<div class="create-account__container">
+  <div class="create-account__form">
+    <h2 class="create-account__title">新しいアカウントを作成</h2>
+
+    <%# エラー表示の共通部品 %>
+    <%= render "shared/error-explanation", user: @user %>
+
+    <div class="account__wrapper">
+      <%= form_with model: @user do |f| %>
+      <div class="account__container  account__form--required">
+        <%= f.text_field :username, placeholder:'ユーザ名', class: 'account__form  ' %>
+      </div>
+      <div class="account__container account__form--required">
+        <%= f.email_field :email, placeholder:'メールアドレス', class: 'account__form '  %>
+      </div>
+      <div class="account__container account__form--required">
+        <%= f.password_field :password, placeholder:'パスワード', class: 'account__form '  %>
+      </div>
+      <div class="account__container account__form--required">
+        <%= f.password_field :password_confirmation, placeholder:'パスワード確認', class: 'account__form '  %>
+      </div>
+      <div class="account__container ">
+        <%= f.submit "新しいアカウントを作成", class: 'account__submit btn btn-primary btn-lg btn-block' %>
+      </div>
+      <% end %>
+      <%= link_to "すでにアカウントをお持ちの方はログイン", login_path,class: 'account__login-link' %>
+    </div>
+  </div>

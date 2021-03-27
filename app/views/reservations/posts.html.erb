@@ -1,0 +1,39 @@
+<div class="table__container">
+  <h1 class="table__title">予約済みルーム一覧</h1>
+  <table class="table__main">
+
+    <%# テーブルヘッダ %>
+    <thead class="table__head">
+      <tr class="table__head-row">
+        <th class="table__head-element">ルーム画像</th>
+        <th class="table__head-element">ルーム名</th>
+        <th class="table__head-element">ルーム紹介</th>
+        <th class="table__head-element">合計料金 </th>
+        <th class="table__head-element">開始日</th>
+        <th class="table__head-element">終了日</th>
+        <th class="table__head-element">予約確定日時</th>
+      </tr>
+    </thead>
+
+    <%# テーブルボディ %>
+    <tbody class="table__body">
+
+      <% @reservations.each do |reservation| %>
+      <tr class="table__body-row">
+        <td class="table__body-element">
+          <%= link_to image_tag(reservation.room.room_img.to_s, class: "table__body-element--img-tag"), reserve_room_path(reservation.room.id)%>
+        </td>
+        <td class="table__body-element ">
+          <%= link_to reservation.room.roomname, reserve_room_path(reservation.room.id), class: "table__body-element--link" %>
+        </td>
+        <td class="table__body-element"><%= reservation.room.introduction %></td>
+        <td class="table__body-element"><%= "¥ #{reservation.sum_of_fee}" %></td>
+        <td class="table__body-element"><%= reservation.start_date %></td>
+        <td class="table__body-element"><%= reservation.end_date %></td>
+        <td class="table__body-element"><%= reservation.created_at %></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

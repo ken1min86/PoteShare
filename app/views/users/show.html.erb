@@ -1,0 +1,41 @@
+<div class="row">
+  <section class="user-nav col-lg-2 d-lg-block d-none">
+    <ul>
+      <li class="user-nav__list user-nav__list--active ">
+        <%= link_to "アカウント", users_account_path, class: "user-nav__element user-nav__element--active" %>
+      </li>
+      <li class="user-nav__list">
+        <%= link_to "プロフィール", users_profile_path, class: "user-nav__element" %>
+      </li>
+    </ul>
+  </section>
+
+  <section class="user-nav-mobile col-lg-2 d-lg-none">
+    <ul class="user-nav-mobile__container">
+      <li class="user-nav-mobile__list user-nav-mobile__list--active">
+        <%= link_to "アカウント", users_account_path, class: "user-nav-mobile__element user-nav-mobile__element--active" %>
+      </li>
+      <li class="user-nav-mobile__list ">
+        <%= link_to "プロフィール", users_profile_path, class: "user-nav-mobile__element " %>
+      </li>
+    </ul>
+  </section>
+
+  <section class="user-view col-lg-10">
+    <div class="account-info">
+      <h2 class="account-info__row account-info__row--title">アカウント</h2>
+      <div class="row account-info__row">
+        <p class="col-md-3 account-info__content-title">メールアドレス</p>
+        <p class="col-md-9 account-info__content-detail"><%= @user.email %></p>
+      </div>
+      <div class="row account-info__row">
+        <p class="col-md-3 account-info__content-title">パスワード</p>
+        <p class="col-md-9 account-info__content-detail">*********</p>
+      </div>
+      <div class="row account-info__row account-info__row--no-border">
+        <%# <button type="button" class="btn btn-primary">編集</button> %>
+        <%= button_to "編集", users_edit_path, {method: :get, class: "btn btn-primary"} %>
+      </div>
+    </div>
+  </section>
+</div>
