@@ -1,0 +1,17 @@
+.room-reserve-finish {
+  max-width: 880px;
+  background-color: #fff;
+  border: 1px solid #eaedef;
+  margin: 30px auto;
+
+  &__row {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,58 @@
+// ***************************
+// 登録済みルーム一覧画面
+// /rooms/posts
+.table {
+  &__container {
+    padding: 30px 60px;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+  }
+
+  &__main {
+    text-align: center;
+  }
+
+  &__head {
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+  }
+
+  &__head-element {
+    vertical-align: middle;
+    padding: 8px 15px;
+  }
+
+  &__body-row {
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+
+    &:nth-child(even) {
+      background-color: #f9fafb;
+    }
+  }
+
+  &__body-element {
+    vertical-align: middle;
+    padding: 16px;
+
+    &--img-tag {
+      width: 240px;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    &--link {
+      color: #4a90e2;
+      text-decoration: underline;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}
+
+// ***************************
+// ルーム予約画面(BEM準じてBlock毎にSCSSファイルを作成)
+// /rooms/:id

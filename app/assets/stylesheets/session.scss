@@ -1,0 +1,21 @@
+.do-login {
+  @include account-and-login-form;
+}
+
+.login {
+  &__container {
+    margin-bottom: 10px;
+    width: 300px;
+    margin: 0 auto 10px;
+  }
+
+  @include input-form-required;
+
+  &__submit {
+    @include template-btn;
+  }
+
+  &__login-link {
+    @include templete-link;
+  }
+}

@@ -1,0 +1,50 @@
+<div class="top">
+  <%# トップ %>
+  <div class="top__main">
+    <div class="row">
+      <div class="top__search-container">
+        <div class="col-lg-6 ">
+          <div class="top__search-box">
+            <div class="top__search-title-box mb-4">
+              <p class="top__search-title ">Potepan Shareでまだ体験したことのない旅をしよう</p>
+            </div>
+            <div class="top__search-area">
+              <%= search_form_for @q, url: search_room_path , method: :get do |f| %>
+              <%= f.label :address_cont, "エリア", class: "top__search-label"%>
+              <%= f.search_field :address_cont, class: "top__search-field", placeholder: '東京' %>
+              <%= f.submit '探す', class: "btn btn-primary top__search-btn" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# おすすめのエリア %>
+<div class="top__secondary">
+  <div class="top__secondary-container">
+    <h2 class="top__secondary-title">おすすめのエリア</h2>
+    <div class="row">
+      <div class="top__secondary-img-box col-lg-3 col-6">
+        <%= link_to image_tag(  '/top/img_tokyo.jpg' , class: "top__secondary-img" ),search_room_path(q: {address_cont: "東京"}) %>
+        <span class="top__secondary-img-title">東京</span>
+      </div>
+      <div class="top__secondary-img-box col-lg-3 col-6">
+        <%= link_to image_tag(  '/top/img_osaka.jpg' , class: "top__secondary-img" ),search_room_path(q: {address_cont: "大阪"}) %>
+        <span class="top__secondary-img-title">大阪</span>
+      </div>
+      <div class="top__secondary-img-box col-lg-3 col-6">
+        <%= link_to image_tag(  '/top/img_kyoto.jpg' , class: "top__secondary-img" ),search_room_path(q: {address_cont: "京都"}) %>
+        <span class="top__secondary-img-title">京都</span>
+      </div>
+      <div class="top__secondary-img-box col-lg-3 col-6">
+        <%= link_to image_tag(  '/top/img_sapporo.jpg' , class: "top__secondary-img" ),search_room_path(q: {address_cont: "札幌"}) %>
+        <span class="top__secondary-img-title">札幌</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,49 @@
+.room-show {
+  padding: 30px 0px 50px; //今回はBootstrapのコンテナを使用しているためBlockにマージンをつけているが、本来はBlockにマージンはつけない。
+
+  &__left {
+    padding: 0 15px;
+  }
+
+  &__right {
+    padding: 0 15px;
+  }
+
+  &__room-image {
+    width: 100%;
+  }
+
+  &__room-image-tag {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__room-info-container {
+    border-bottom: 1px solid #eaedef;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(234, 237, 239);
+    padding: 30px 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__room-info-right {
+    margin-left: 30px;
+  }
+
+  &__users-icon {
+    @include icon-image;
+  }
+
+  &__room-info-header {
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__room-info-address {
+    padding: 15px 0;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="edit-account__container">
+  <div class="edit-account__form">
+    <h2 class="edit-account__title">アカウント編集</h2>
+
+    <%# エラー表示の共通部品 %>
+    <%= render "shared/error-explanation", user: @user %>
+
+    <div class="account__wrapper">
+      <%= form_with model: @user do |f| %>
+      <div class="account__container">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, placeholder:'メールアドレスを入力してください', class: 'account__form ' %>
+      </div>
+      <div class="account__container">
+        <%= f.label :password, "変更後パスワード（変更する場合のみ入力）" %>
+        <%= f.password_field :password, class: 'account__form'  %>
+      </div>
+      <div class="account__container">
+        <%= f.label :password_confirmation, "パスワード確認用（変更する場合のみ入力）" %>
+        <%= f.password_field :password_confirmation, class: 'account__form'  %>
+      </div>
+      <div class="account__container">
+        <%= f.label :password_now, "現在のパスワード" %>
+        <%= f.password_field :password_now, placeholder:'現在のパスワードを入力', class: 'account__form'  %>
+      </div>
+      <div class="account__container">
+        <%= f.submit "更新", class: 'account__submit btn btn-primary btn-lg btn-block' %>
+      </div>
+      <% end %>
+      <div class="account__container">
+        <%= button_to "戻る", {controller: 'users', action: 'show'}, { method: :get, class: "account__submit btn btn-outline-primary btn-lg btn-block" }  %>
+      </div>
+    </div>
+  </div>
+</div>

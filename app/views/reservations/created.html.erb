@@ -1,0 +1,28 @@
+<div class="container-bgc-gray">
+  <div class="room-reserve-finish">
+    <div class="room-reserve-finish__row">
+      <div class="row">
+        <h2 class="col-md-3 room-reserve-finish__title">予約した部屋</h2>
+        <%= link_to @room.roomname, reserve_room_path(@room.id), method: :get, class: "col-md-9" %>
+      </div>
+    </div>
+    <div class="room-reserve-finish__row">
+      <div class="row">
+        <h2 class="col-md-3 room-reserve-finish__title">開始日</h2>
+        <p class="col-md-9"><%= @reservation.start_date.strftime("%Y年%m月%d日") %></p>
+      </div>
+    </div>
+    <div class="room-reserve-finish__row">
+      <div class="row">
+        <h2 class="col-md-3 room-reserve-finish__title">終了日</h2>
+        <p class="col-md-9"><%= @reservation.end_date.strftime("%Y年%m月%d日") %></p>
+      </div>
+    </div>
+    <div class="room-reserve-finish__row">
+      <div class="row">
+        <h2 class="col-md-3 room-reserve-finish__title">価格</h2>
+        <p class="col-md-9"><%= @reservation.sum_of_fee %>円</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,15 +2,92 @@
 <html>
   <head>
     <title>PoteShare</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all'%>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header ">
+
+      <%# ヘッダー左側 %>
+      <div class="header__left">
+        <a href="http://localhost:3000/">
+          <%= image_tag '/assets/logo.png' %>
+        </a>
+        <div class="header__search-container d-lg-inline-block d-none">
+          <%= search_form_for @q, url: search_room_path , method: :get do |f| %>
+          <%= f.search_field :address_cont, class: "header__search-field", placeholder: 'エリア' %>
+          <i class="fas fa-map-marker-alt header__search-icon"></i>
+        </div>
+        <div class="header__search-container d-lg-inline-block d-none">
+          <%= f.search_field :address_or_roomname_or_introduction_cont, class: "header__search-field",  placeholder: 'キーワード' %>
+          <i class="fas fa-search  header__search-icon"></i>
+        </div>
+        <%= f.submit class: "header__submit--none" %>
+        <% end %>
+      </div>
+
+      <%# ヘッダー右側 %>
+      <% unless current_user %>
+      <div class="header__right">
+        <%= button_to "ログイン", login_path, {method: :get, class: "btn btn-primary" } %>
+        <%= button_to "登録する", new_user_path, {method: :get, class: "btn btn-secondary" } %>
+      </div>
+      <% else %>
+      <div class="header__right">
+        <p class="header__right-username"><%= current_user.username %></p>
+        <%= image_tag current_user.user_img.url, alt: "User's icon", class: "account-info__content-image", id: "toggle-user-option" %>
+
+        <%# アイコンクリック時に表示 %>
+        <div id="user-option" class="user-option">
+          <ul class="user-option__nav">
+            <li class="user-option__element">
+              <%= link_to 'ルーム登録', new_room_path, class: "user-option__text" %>
+            </li>
+            <li class="user-option__element">
+              <%= link_to '予約済みルーム一覧', reservations_posts_path, class: "user-option__text" %>
+            </li>
+            <li class="user-option__element">
+              <%= link_to '登録済みルーム一覧', rooms_posts_path, class: "user-option__text" %>
+            </li>
+            <li class="user-option__element">
+              <%= link_to '設定', users_account_path, class: "user-option__text" %>
+            </li>
+            <li class="user-option__element">
+              <%= link_to 'ログアウト', logout_path, method: :delete, class: "user-option__text" %>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      <% end %>
+
+    </header>
+
+    <main class="main">
+
+      <%# flash notice %>
+      <% if flash[:notice] %>
+      <div class="notice bg-success text-white">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+      <% if flash[:alert] %>
+      <div class="notice alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <%# フッター %>
+    <footer class="footer">
+      <p class="footer__company-logo">© 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>
